@@ -1,3 +1,8 @@
+const checkImage = require("../images/check.png");
+const cycle = require("../images/recycle-bin.png");
+const saveImage = require("../images/save.png");
+
+
 export class Todo {
   constructor(inputValue) {
     (this.inputValue = inputValue), this.allFunctions();
@@ -14,9 +19,9 @@ export class Todo {
     let div = `
         <div class="list__div">
           <div><input class="todo__input" value = "${this.inputValue}" disabled></div>
-          <div><img class="edit__icon" src="./images/check.png"></div>
-          <div><img class="save__icon" src="./images/save.png" style="display:none"></div>
-          <div><img class="remove__icon" src="./images/recycle-bin.png"></div>
+          <div><img class="edit__icon" src="${checkImage.default}"></div>
+          <div><img class="save__icon" src="${saveImage.default}" style="display:none"></div>
+          <div><img class="remove__icon" src="${cycle.default}"></div>
         </div>
         `;
     document.querySelector(".container__list").innerHTML += div;
