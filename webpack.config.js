@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -9,6 +10,14 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
+  devServer: {
+      static: {
+        directory: path.join(__dirname, "dist"),
+      },
+      compress: true,
+      port: 9000,
+      open: true,
+    },
   module: {
     rules: [
       {
@@ -26,14 +35,17 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
-          test: /\.(png|svg|jpg)$/,
-          use: ['file-loader']
+        test: /\.(png|svg|jpg)$/,
+        use: ["file-loader"],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "styles.css",
+    }),
+    new HtmlWebpackPlugin({
+      template: './todo.html'
     }),
   ],
 };

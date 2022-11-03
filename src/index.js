@@ -14,4 +14,4 @@ const buttonClickHandler = () => {
   $input.value = "";
 };
 
-$button.addEventListener("click", buttonClickHandler);
+$button?.addEventListener("click", buttonClickHandler);
